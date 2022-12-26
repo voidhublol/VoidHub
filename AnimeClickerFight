@@ -166,7 +166,14 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
             ReplicatedStorage.Tool.DrawUp.Msg.DrawHero:InvokeServer(2101,1)
         end    
     })
-    
+
+    Eggs:AddButton({
+        Name = "Hatch Christmas Egg (6K)",
+        Callback = function(Value)
+            ReplicatedStorage.Tool.DrawUp.Msg.DrawHero:InvokeServer(2102,1)
+        end    
+    })
+
     Eggs:AddButton({
         Name = "Hatch",
         Callback = function(Value)
