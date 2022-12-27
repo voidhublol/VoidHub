@@ -39,14 +39,11 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
             wait(_G.autoDashSpeed)
         end
     end
-
-    function autoClick()
-        while _G.autoClick == true do
-            ReplicatedStorage.System.SystemClick.Click:FireServer()
-            wait(_G.autoDashSpeed)
-        end
-    end
     
+    function autoJump()
+        game.Players.LocalPlayer.Character.Humanoid.Jump = true
+    end 
+
     function equipBest()
         ReplicatedStorage.ServerMsg.WearBestPet:InvokeServer()
     end
@@ -95,13 +92,13 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         Icon = "rbxassetid://4483345998",
     })
 
-    local Misc = Window:MakeTab({
-        Name = "Misc", --change the text inside "" to change the tab name
+    local Teleport = Window:MakeTab({
+        Name = "Teleport", --change the text inside "" to change the tab name
         Icon = "rbxassetid://4483345998",
     })
 
-    local Teleport = Window:MakeTab({
-        Name = "Teleport", --change the text inside "" to change the tab name
+    local Misc = Window:MakeTab({
+        Name = "Misc", --change the text inside "" to change the tab name
         Icon = "rbxassetid://4483345998",
     })
     
@@ -156,6 +153,21 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
             autoDash()
         end    
     })
+
+    Main:AddToggle({
+         Name = "Auto Jump",
+         Default = false,
+        Callback = function(Value)
+		_G.autojump = Value
+		spawn(function()
+		    while _G.autojump do wait(0.5)
+			pcall(function()
+			    autoJump()
+                   end)
+		       end
+	       end)
+       end     
+    })  
 
     --Eggs
     Eggs:AddButton({
@@ -223,34 +235,6 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
             end
         end    
     })
-
-    -- Misc
-    local walkspeedSlider = Misc:AddSlider({
-	Name = "Walkspeed",
-	Min = 0,
-	Max = 1000,
-	Default = 16,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "Walkspeed",
-	Callback = function(Value)
-	    _G.walkspeed = Value
-	end    
-    })
-    
-    Misc:AddButton({
-        Name = "Daily Spin",
-        Callback = function(Value)
-            dailySpin()
-        end    
-    })
-
-    Misc:AddButton({
-        Name = "Christmas Daily Reward",
-        Callback = function(Value)
-            christmasDailyReward()
-        end
-    })
     
     --Teleport
     Teleport:AddButton({
@@ -299,6 +283,34 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
                 _G.selectTeleport = 9
             end
         end    
+    })
+
+    -- Misc
+    local walkspeedSlider = Misc:AddSlider({
+	Name = "Walkspeed",
+	Min = 0,
+	Max = 1000,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Walkspeed",
+	Callback = function(Value)
+	    _G.walkspeed = Value
+	end    
+    })
+    
+    Misc:AddButton({
+        Name = "Daily Spin",
+        Callback = function(Value)
+            dailySpin()
+        end    
+    })
+
+    Misc:AddButton({
+        Name = "Christmas Daily Reward",
+        Callback = function(Value)
+            christmasDailyReward()
+        end
     })
 
     --Credits
