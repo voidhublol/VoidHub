@@ -8,7 +8,7 @@ if game.placeId == 10598587051 then
     
     --Values
     _G.autoClick = false
-    _G.autoClickSpeed = 0.35
+    _G.autoClickSpeed = 0.1
     _G.autoDashSpeed = 1
     
     _G.autoRun = false
@@ -80,60 +80,82 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
     function teleportLocation()
         ReplicatedStorage.ServerMsg.Teleport:FireServer(_G.selectTeleport) --will teleport to christmas
     end
+
+    -- Small Money Boost
+    function autoBoost()
+       ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(101)
+    end    
+
+    -- Super Money Boost
+    function autoBoostt()
+        ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(201)
+     end   
+
+    --Small Lucky Boost
+    function autoBoosttt()
+        ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(301)
+    end
+
+    --Super Lucky Boost
+    function autoBoostttt()
+        ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(401)
+    end
+
+    --Omega Lucky Boost
+    function autoBoosttttt()
+        ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(501)
+    end
     
+    function destroyGui()
+        OrionLib:Destroy()
+    end
+
     --Tab
     local Main = Window:MakeTab({
         Name = "Main", --change the text inside "" to change the tab name
-        Icon = "rbxassetid://4483345998",
-    })
-    
-    local Eggs = Window:MakeTab({
-        Name = "Eggs", --change the text inside "" to change the tab name
-        Icon = "rbxassetid://4483345998",
+        Icon = "rbxassetid://9792462652",
     })
 
+    local Eggs = Window:MakeTab({
+        Name = "Eggs", --change the text inside "" to change the tab name
+        Icon = "rbxassetid://9792632523",
+    })
+
+    local Boost = Window:MakeTab({
+        Name = "Boost", --change the text inside "" to change the tab name
+        Icon = "rbxassetid://9766675093",
+    })
     local Teleport = Window:MakeTab({
         Name = "Teleport", --change the text inside "" to change the tab name
-        Icon = "rbxassetid://4483345998",
+        Icon = "rbxassetid://9766676906",
     })
 
     local Misc = Window:MakeTab({
         Name = "Misc", --change the text inside "" to change the tab name
-        Icon = "rbxassetid://4483345998",
+        Icon = "rbxassetid://9766671943",
     })
     
     local Credits = Window:MakeTab({
         Name = "Credits", --change the text inside "" to change the tab name
-        Icon = "rbxassetid://4483345998",
+        Icon = "rbxassetid://9766675093",
     })
-
-    --Main
+    local Section = Main:AddSection({
+        Name = "Auto Farm"
+    })
     Main:AddButton({
-        Name = "Equip Best",
+        Name = "Equip Best Hero",
         Callback = function(Value)
             equipBest()
         end    
     })
 
     Main:AddToggle({
-        Name = "Auto Click",
+        Name = "Auto Fast Click",
         Default = false,
         Callback = function(Value)
             _G.autoClick = Value
             autoClick()
         end    
-    })
-
-    local autoClickSpeedSlider = Main:AddSlider({
-	Name = "Auto Click Speed",
-	Min = 0,
-	Max = 1,
-	Default = 0.15,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 0.01,
-	Callback = function(Value)
-	    _G.autoClickSpeed = Value
-	end    
     })
 
     Main:AddToggle({
@@ -169,7 +191,27 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
        end     
     })  
 
-    --Eggs
+    local Section = Main:AddSection({
+        Name = "Daily Rewards"
+    })
+
+    Main:AddButton({
+        Name = "Daily Spin",
+        Callback = function(Value)
+            dailySpin()
+        end    
+    })
+
+    Main:AddButton({
+        Name = "Christmas Daily Reward",
+        Callback = function(Value)
+            christmasDailyReward()
+        end
+    })
+
+    local Section = Eggs:AddSection({
+        Name = "Buy Eggs"
+    })
     Eggs:AddButton({
         Name = "Hatch Christmas Egg (600)",
         Callback = function(Value)
@@ -235,8 +277,50 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
             end
         end    
     })
+
+    local Section = Boost:AddSection({
+        Name = "Use Boost"
+    })
+    --Boost
+    Boost:AddButton({
+        Name = "Small Money Boost",
+        Callback = function(Value)
+            autoBoost()
+        end    
+    })
+
+    Boost:AddButton({
+        Name = "Super Money Boost",
+        Callback = function(Value)
+            autoBoostt()
+        end    
+    })
+
+    Boost:AddButton({
+        Name = "Small Lucky Boost",
+        Callback = function(Value)
+            autoBoosttt()
+        end    
+    })
+
+    Boost:AddButton({
+        Name = "Super Lucky Boost",
+        Callback = function(Value)
+            autoBoostttt()
+        end    
+    })
+
+    Boost:AddButton({
+        Name = "Omega Lucky Boost",
+        Callback = function(Value)
+            autoBoosttttt()
+        end    
+    })
     
-    --Teleport
+    
+    local Section = Teleport:AddSection({
+        Name = "Teleport"
+    })
     Teleport:AddButton({
         Name = "Teleport Christmas",
         Callback = function(Value)
@@ -285,7 +369,19 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         end    
     })
 
-    -- Misc
+    local Section = Misc:AddSection({
+        Name = "Miscellaneous"
+
+    })
+
+    Misc:AddButton({
+        Name = "Destroy Gui",
+        Callback = function(Value)
+            destroyGui()
+        end    
+    })
+
+
     local walkspeedSlider = Misc:AddSlider({
 	Name = "Walkspeed",
 	Min = 0,
@@ -298,26 +394,12 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
 	    _G.walkspeed = Value
 	end    
     })
-    
-    Misc:AddButton({
-        Name = "Daily Spin",
-        Callback = function(Value)
-            dailySpin()
-        end    
-    })
 
-    Misc:AddButton({
-        Name = "Christmas Daily Reward",
-        Callback = function(Value)
-            christmasDailyReward()
-        end
+    local Section = Credits:AddSection({
+        Name = "Creators and Developers"
     })
-
-    --Credits
     Credits:AddLabel("Made by:")
     Credits:AddLabel("Stonk Biznezzz#3410")
-    
-    
     
 
     --Main Run
