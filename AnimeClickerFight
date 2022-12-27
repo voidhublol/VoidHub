@@ -12,7 +12,7 @@ if game.placeId == 10598587051 then
     _G.autoDashSpeed = 1
     
     _G.autoRun = false
-    _G.autoDash = faalse
+    _G.autoDash = false
     _G.walkspeed = 16
     _G.selectEgg = 1
     _G.selectTeleport = 1
