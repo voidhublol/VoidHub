@@ -133,6 +133,12 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
        ReplicatedStorage.ServerMsg.Code:InvokeServer("ONEPUNCH") 
     end
 
+    function antiAfk()
+    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
+        v:Disable()
+        end
+    end
+
     function destroyGui()
         OrionLib:Destroy()
     end
@@ -409,6 +415,13 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
     })
 
     Misc:AddButton({
+        Name = "Anti Afk",
+        Callback = function(Value)
+            antiAfk()
+        end    
+    })
+
+    Misc:AddButton({
         Name = "Redeem All Codes",
         Callback = function(Value)
             redeemCodes()
@@ -440,6 +453,5 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         setWalkspeed()
     end
     game:GetService('RunService'):BindToRenderStep('Main', 201, main);
-    
 end
-OrionLib:Init()
+OrionLib:Init())
