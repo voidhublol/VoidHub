@@ -24,7 +24,7 @@ if game.placeId == 10598587051 then
             wait(_G.autoClickSpeed)
         end
     end
-    
+
     function autoRun()
         if _G.autoRun == true then
             ReplicatedStorage.ServerMsg.Setting:InvokeServer("isAutoOn",1)
@@ -32,6 +32,7 @@ if game.placeId == 10598587051 then
             ReplicatedStorage.ServerMsg.Setting:InvokeServer("isAutoOn",0)
         end
     end
+
     function autoDash()
         while _G.autoDash == true do
 local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875, 2345.071044921875),["PlayerId"] = game.Players.LocalPlayer.UserId},[2] = "BloxFruitDash"}
@@ -81,31 +82,57 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         ReplicatedStorage.ServerMsg.Teleport:FireServer(_G.selectTeleport) --will teleport to christmas
     end
 
-    -- Small Money Boost
     function autoBoost()
        ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(101)
     end    
 
-    -- Super Money Boost
     function autoBoostt()
         ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(201)
      end   
 
-    --Small Lucky Boost
     function autoBoosttt()
         ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(301)
     end
 
-    --Super Lucky Boost
     function autoBoostttt()
         ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(401)
     end
 
-    --Omega Lucky Boost
     function autoBoosttttt()
         ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(501)
     end
-    
+
+    function redeemCodes()
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("210KLIKES")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("SAITAMA")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE5")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE1")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("MERRYCHRISTMAS") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE2") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE5")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE3")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("BUNNY") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("TITAN")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("ALLBLUE")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("DRAGON") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("DRAGONBALL")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE2") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("MASK")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("RUSHRUSH") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("ONEPIECE") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("5KLIKES")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE2") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("KONODIODA")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("STANDPOWER")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("GETSUGATENSHOU")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE4") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE5")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE6")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE7") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE8")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("ONEPUNCH") 
+    end
+
     function destroyGui()
         OrionLib:Destroy()
     end
@@ -381,6 +408,12 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         end    
     })
 
+    Misc:AddButton({
+        Name = "Redeem All Codes",
+        Callback = function(Value)
+            redeemCodes()
+        end    
+    })
 
     local walkspeedSlider = Misc:AddSlider({
 	Name = "Walkspeed",
@@ -400,7 +433,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
     })
     Credits:AddLabel("Made by:")
     Credits:AddLabel("Stonk Biznezzz#3410")
-    
+    Credits:AddLabel("TheSide_#8821")
 
     --Main Run
     function main()
