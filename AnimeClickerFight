@@ -66,6 +66,10 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         ReplicatedStorage.Msg.RemoteEvent:FireServer(unpack(args))
     end
 
+    function groupRewards()
+        ReplicatedStorage.ServerMsg.GetGroupReward:FireServer()
+    end
+
     function teleportHome()
         ReplicatedStorage.ServerMsg.Teleport:FireServer(1)
         ReplicatedStorage.ServerMsg.Teleport:FireServer(2)
@@ -241,6 +245,15 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
             christmasDailyReward()
         end
     })
+
+    Main:AddButton({
+        Name = "Claim Group Rewards",
+        Callback = function(Value)
+            groupRewards()
+        end    
+    })
+
+    Main:AddParagraph("You must join their group to claim group rewards","https://www.roblox.com/groups/15150189/BestBunny#!/about")
 
     local Section = Eggs:AddSection({
         Name = "Buy Eggs"
@@ -454,4 +467,4 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
     end
     game:GetService('RunService'):BindToRenderStep('Main', 201, main);
 end
-OrionLib:Init())
+OrionLib:Init()
