@@ -113,8 +113,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
        ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE5")
        ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE1")
        ReplicatedStorage.ServerMsg.Code:InvokeServer("MERRYCHRISTMAS") 
-       ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE2") 
-       ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE5")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE2")
        ReplicatedStorage.ServerMsg.Code:InvokeServer("WELFARE3")
        ReplicatedStorage.ServerMsg.Code:InvokeServer("BUNNY") 
        ReplicatedStorage.ServerMsg.Code:InvokeServer("TITAN")
@@ -150,9 +149,13 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         OrionLib:Destroy()
     end
 
-    --Tab
     local Main = Window:MakeTab({
         Name = "Main", --change the text inside "" to change the tab name
+        Icon = "rbxassetid://9792650361",
+    })
+
+    local Farm = Window:MakeTab({
+        Name = "Farm", --change the text inside "" to change the tab name
         Icon = "rbxassetid://9792462652",
     })
 
@@ -179,17 +182,30 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         Name = "Credits", --change the text inside "" to change the tab name
         Icon = "rbxassetid://9766675093",
     })
+
     local Section = Main:AddSection({
+        Name = "Script Update Notes"
+    })
+
+    Main:AddParagraph("What's New?","Update 2.0")
+
+    Main:AddLabel("Added the New Eggs and Worlds to the Script")
+    Main:AddLabel("Added Anti Afk and new Codes to Redeem All Codes")
+    Main:AddLabel("Fixed some major bugs")
+    Main:AddLabel("Do you have any idea? Join Our Discord Server Now!")
+
+    local Section = Farm:AddSection({
         Name = "Auto Farm"
     })
-    Main:AddButton({
+
+    Farm:AddButton({
         Name = "Equip Best Hero",
         Callback = function(Value)
             equipBest()
         end    
     })
 
-    Main:AddToggle({
+    Farm:AddToggle({
         Name = "Auto Fast Click",
         Default = false,
         Callback = function(Value)
@@ -198,7 +214,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         end    
     })
 
-    Main:AddToggle({
+    Farm:AddToggle({
         Name = "Auto Run",
         Default = false,
         Callback = function(Value)
@@ -207,7 +223,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         end    
     })
 
-    Main:AddToggle({
+    Farm:AddToggle({
         Name = "Auto Dash",
         Default = false,
         Callback = function(Value)
@@ -216,7 +232,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         end    
     })
 
-    Main:AddToggle({
+    Farm:AddToggle({
          Name = "Auto Jump",
          Default = false,
         Callback = function(Value)
@@ -231,32 +247,32 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
        end     
     })  
 
-    local Section = Main:AddSection({
+    local Section = Farm:AddSection({
         Name = "Daily Rewards"
     })
 
-    Main:AddButton({
+    Farm:AddButton({
         Name = "Daily Spin",
         Callback = function(Value)
             dailySpin()
         end    
     })
 
-    Main:AddButton({
+    Farm:AddButton({
         Name = "Christmas Daily Reward",
         Callback = function(Value)
             christmasDailyReward()
         end
     })
 
-    Main:AddButton({
+    Farm:AddButton({
         Name = "Claim Group Rewards",
         Callback = function(Value)
             groupRewards()
         end    
     })
 
-    Main:AddParagraph("You must join their group to claim group rewards","https://www.roblox.com/groups/15150189/BestBunny#!/about")
+    Farm:AddParagraph("You must join their group to claim group rewards","https://www.roblox.com/groups/15150189/BestBunny#!/about")
 
     local Section = Eggs:AddSection({
         Name = "Buy Eggs"
