@@ -80,6 +80,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         ReplicatedStorage.ServerMsg.Teleport:FireServer(7)
         ReplicatedStorage.ServerMsg.Teleport:FireServer(8)
         ReplicatedStorage.ServerMsg.Teleport:FireServer(9)
+        ReplicatedStorage.ServerMsg.Teleport:FireServer(10)
     end
     
     function teleportLocation()
@@ -92,7 +93,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
 
     function autoBoostt()
         ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(201)
-     end   
+    end   
 
     function autoBoosttt()
         ReplicatedStorage.ServerMsg.UseItemByItemID:InvokeServer(301)
@@ -134,7 +135,9 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
        ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE6")
        ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE7") 
        ReplicatedStorage.ServerMsg.Code:InvokeServer("UPDATE8")
-       ReplicatedStorage.ServerMsg.Code:InvokeServer("ONEPUNCH") 
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("ONEPUNCH")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("SHIPPUDEN")
+       ReplicatedStorage.ServerMsg.Code:InvokeServer("SASUKE")  
     end
 
     function antiAfk()
@@ -282,7 +285,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
     Eggs:AddDropdown({
         Name = "Select Egg",
         Default = "Select Egg",
-        Options = {"40 Naruto Egg", "600 Naruto Egg", "2K Demon Egg", "26K Demon Egg", "330K Piece Egg", "2.40M Piece Egg", "73M Dragon Egg", "370M Dragon Egg", "7.80B Titan Egg", "36B Titan Egg", "1.10T Hero Egg", "7.10 Hero Egg", "130T Dragon Egg", "890T Dragon Egg", "17P Reaper Egg", "110P Reaper Egg", "3.70E Stand Egg", "11E Stand Egg"},
+        Options = {"40 Naruto Egg", "600 Naruto Egg", "2K Demon Egg", "26K Demon Egg", "3M Dragon E30K Piece Egg", "2.40M Piece Egg", "73gg", "370M Dragon Egg", "7.80B Titan Egg", "36B Titan Egg", "1.10T Hero Egg", "7.10 Hero Egg", "130T Dragon Egg", "890T Dragon Egg", "17P Reaper Egg", "110P Reaper Egg", "3.70E Stand Egg", "11E Stand Egg", "460E Ninja II Egg", "1.40aa Ninja II Egg"},
         Callback = function(Value)
             if Value == "¥40 Naruto Egg" then
                 _G.selectEgg = 1
@@ -320,6 +323,10 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
                 _G.selectEgg = 17
             elseif Value == "11E Stand Egg" then
                 _G.selectEgg = 18
+            elseif Value == "460E Ninja II Egg" then
+                _G.selectEgg = 19
+            elseif Value == "140aa Ninja II Egg" then
+                _G.selectEgg = 20
             end
         end    
     })
@@ -391,7 +398,7 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
         Teleport:AddDropdown({
         Name = "Select Location",
         Default = "Naruto",
-        Options = {"Naruto", "Demon", "Piece", "Dragon", "Titan", "Punch", "Hero", "Reaper", "Stand"},
+        Options = {"Naruto", "Demon", "Piece", "Dragon", "Titan", "Punch", "Hero", "Reaper", "Stand", "Ninja II"},
         Callback = function(Value)
             if Value == "Naruto" then
                 _G.selectTeleport = 1
@@ -411,6 +418,8 @@ local args = {[1] = {["Goal"] = Vector3.new(-47.122676849365234, 2.9998779296875
                 _G.selectTeleport = 8
             elseif Value == "Stand" then
                 _G.selectTeleport = 9
+            elseif Value == "Ninja II" then
+                _G.selectTeleport = 10
             end
         end    
     })
